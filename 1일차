@@ -1,0 +1,76 @@
+/*
+SELECT 컬럼1, 컬럼2, ...
+    FROM 테이블명
+WHERE 조건
+ORDER BY 정렬순서;
+*/
+
+--SELECT 절 : 컬럼1, 컬럼2 혹은 전체 컬럼 조회 시 * 명시
+--FROM 절 : 테이블1, 테이블2 등 2개 이상 명시할때는 콤마로 구분
+
+SELECT * 
+    FROM EMPLOYEES;
+
+DESC EMPLOYEES;
+
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY
+    FROM EMPLOYEES;
+    
+SELECT *
+    FROM employees
+WHERE EMPLOYEE_ID = 100;
+
+SELECT *
+    FROM employees
+    WHERE EMPLOYEE_ID <> 100;    -- 아니다 표현 : <> 또는 != 
+
+SELECT *
+    FROM EMPLOYEES
+    WHERE EMPLOYEE_ID >100
+    AND JOB_ID='ST_CLERK';
+    
+SELECT *
+    FROM EMPLOYEES
+    WHERE SALARY >= 5000;
+    
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY
+    FROM EMPLOYEES
+    WHERE SALARY >= 5000;
+    
+--2400이하 <=2400 이하는 오른쪽
+--2000이상 >=2000 이상은 왼쪽
+SELECT *
+    FROM EMPLOYEES
+    WHERE SALARY <=2400
+    OR SALARY >=20000;
+    
+SELECT *
+    FROM employees
+    WHERE last_name = 'Grant';
+    
+-- desc 내림차순 (높은순서 -> 낮은순서)
+-- asc 또는 공백 오름차순 (낮은순서 -> 높은순서)
+SELECT *
+    FROM employees
+    ORDER BY employee_id desc;
+    
+SELECT *
+FROM employees
+order by first_name, last_name;
+
+SELECT *
+FROM employees
+order by first_name, last_name desc;
+
+SELECT *
+FROM employees
+ORDER BY 2,3 desc;  -- SELECT절의 2번째, 3번째 절을 내림차순으로 보겠다.
+
+SELECT employee_id, first_name, last_name, email
+FROM employees
+ORDER BY 2,3,5;  -- SELECT절의 5번째는 없으니까 오류남
+
+SELECT employee_id, first_name, last_name, email
+FROM employees
+ORDER BY 2, 3, phone_number;  -- SELECT 절에 컬럼이름이 없더라도 컬럼 이름으로 정렬 가능
+
